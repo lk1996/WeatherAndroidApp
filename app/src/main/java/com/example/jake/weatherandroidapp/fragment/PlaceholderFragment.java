@@ -1,13 +1,17 @@
 package com.example.jake.weatherandroidapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.jake.weatherandroidapp.R;
+import com.example.jake.weatherandroidapp.activity.DetailPlan;
+import com.example.jake.weatherandroidapp.activity.MainActivity;
 
 /**
  * Created by Jake on 16/7/5.
@@ -19,7 +23,7 @@ import com.example.jake.weatherandroidapp.R;
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
-
+        Button buttonDeatil;
         public PlaceholderFragment() {
         }
 
@@ -40,8 +44,18 @@ import com.example.jake.weatherandroidapp.R;
                                  Bundle savedInstanceState) {
 
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            buttonDeatil=(Button)rootView.findViewById(R.id.button2);
+            buttonDeatil.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent=new Intent();
+                    intent.setAction(DetailPlan.DETAIL_PLAN_ACTION);
+                    startActivity(intent);
+                }
+            });
+//            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+//            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
 
             return rootView;
         }
